@@ -10962,3 +10962,11 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background-color: #0000be;
+}
+
+body .title-container .title {
+  color: white;
+}
+
