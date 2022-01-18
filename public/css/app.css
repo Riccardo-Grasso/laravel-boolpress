@@ -10964,10 +10964,9 @@ a.text-dark:focus {
 
 body {
   background-color: #758aff;
-}
-
-body .text-white {
-  color: white;
+  /* .text-white {
+      color: white;
+  } */
 }
 
 body .title-container .title {

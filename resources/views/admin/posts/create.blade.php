@@ -21,7 +21,7 @@
 
         <div class="mb-4">
             <label for="field_text" class="form-label">Testo</label>
-            <input type="text" class="form-control" id="field_text" name="text">
+            <textarea class="form-control" id="field_text" name="text" rows="3"></textarea>
         </div>
 
         <div class="mb-4">
