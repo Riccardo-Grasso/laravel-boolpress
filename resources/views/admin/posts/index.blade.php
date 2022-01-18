@@ -13,23 +13,39 @@
                     <div>
                        <h1>{{ __('Posts') }}</h1>
                     </div>
-                    <div>
-                        <a href="{{route("admin.posts.create")}}"><button type="button" class="btn btn-success"> Nuovo Post</button></a>  
+                    <div class="my-2">
+                        <a href="{{route("admin.posts.create")}}"><button type="button" class="btn btn-success">Nuovo Post</button></a>  
                     </div>
-
                 </div>
-            </div>
-                
-                
-               {{--  <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    {{ __('You are logged in!') }}
-                </div> --}}
+                @if(session("msg"))
+                    <div class="alert alert-success"> {{session("msg")}}</div>
+                @endif
+
+                <div class="row row-cols-1 mt-3 w-100">
+                    @foreach ($posts as $post)
+                        <div class="col">
+                            <div class="card my-3">
+                                <div class="card-body">
+                                  <h4 class="card-title">{{$post->title}}</h4>
+                                  <h5 class="card-subtitle mb-2 text-muted">{{$post->subtitle}}</h5>
+                                  <h6 class="card-subtitle mb-2 text-muted">By {{$post->author}}</h6>
+                                  <p class="card-text">{{ $post->text }}</p>
+                                  <div class="d-flex align-items-center justify-content-between">
+
+                                    <div>
+                                        <a href="{{ route('admin.posts.show', $post->id) }}" class="card-link text-decoration-none">Dettagli</a>
+                                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="card-link text-decoration-none">Modifica</a>
+                                    </div>
+                                    
+                                    @include('admin.partials.delete_btn')
+                                </div>
+                                </div>
+                              </div>
+                        </div>
+                    @endforeach
+                </div>
+
             </div>
         </div>
     </div>
