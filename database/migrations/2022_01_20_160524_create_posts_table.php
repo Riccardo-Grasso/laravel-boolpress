@@ -15,10 +15,17 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->text("title");
-            $table->text("subtitle");
-            $table->text("text");
-            $table->string("author");
+
+            $table->string("title")->nullable(false);
+            $table->string("subtitle")->nullable(false);
+            $table->longText("text")->nullable(false);
+            $table->longText("coverImg");
+
+            $table->unsignedBigInteger("author_id");
+            $table->foreign("author_id")
+                ->references("id")
+                ->on("users");
+
             $table->timestamps();
         });
     }

@@ -25,9 +25,14 @@
         </div>
 
         <div class="mb-4">
+            <label for="field_coverImg" class="form-label">Immagine di copertina</label>
+            <input type="text" class="form-control" id="field_coverImg" name="coverImg">
+        </div>
+
+{{--         <div class="mb-4">
             <label for="field_author" class="form-label">Autore</label>
             <input type="text" class="form-control" id="field_author" name="author">
-        </div>
+        </div> --}}
 
         <div>
             <button class="btn btn-danger" type="reset">Cancella</button>
