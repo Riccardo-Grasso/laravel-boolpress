@@ -20,9 +20,21 @@
             <input type="text" class="form-control" id="field_subtitle" name="subtitle" value="{{$post->subtitle}}">
         </div>
 
+        
+        <div class="mb-4">
+            <label for="field_subtitle" class="form-label">Categoria</label>
+            <select name="category_id" id="category_id" class="form-control">
+                <option value="" disabled selected hidden>Scegli una categoria...</option>
+                @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+                
+            </select>
+        </div>
+
         <div class="mb-4">
             <label for="field_text" class="form-label">Testo</label>
-            <input type="text" class="form-control" id="field_text" name="text" value="{{$post->text}}">
+            <textarea class="form-control" id="field_text" name="text" rows="3"></textarea>
         </div>
 
         <div class="mb-4">
@@ -35,6 +47,9 @@
             <button class="btn btn-success" type="submit">Invia</button>
         </div>
     </form>
+
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 
 </div>
 

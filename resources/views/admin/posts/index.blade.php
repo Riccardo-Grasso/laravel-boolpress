@@ -28,7 +28,11 @@
                             <div class="card my-3">
                                 <img src="{{$post->coverImg}}" class="card-img-top" alt="post_img">
                                 <div class="card-body">
-                                    <h4 class="card-title">{{$post->title}}</h4>
+                                    <div class="d-flex justify-content-between">
+                                        <h4 class="card-title">{{$post->title}}</h4>
+
+                                        <div><span class="badge bg-primary" style="color: white">{{$post->category->name}}</span></div>
+                                    </div>                         
                                     <h5 class="card-subtitle mb-2 text-muted">{{$post->subtitle}}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">By {{$post->user->name}}</h6>
                                     <p class="card-text">{!! $post->text !!}</p>

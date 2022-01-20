@@ -20,6 +20,19 @@
         </div>
 
         <div class="mb-4">
+            <label for="field_subtitle" class="form-label">Categoria</label>
+            <select name="category_id" id="category_id" class="form-control">
+                <option value="" disabled selected hidden>Scegli una categoria...</option>
+                @foreach ($categories as $category)
+                    <option value="{{$category->id}}" @if ($category->id === $post->category_id ) selected
+                        
+                    @endif >{{$category->name}}</option>
+                @endforeach
+                
+            </select>
+        </div>
+
+        <div class="mb-4">
             <label for="field_text" class="form-label">Testo</label>
             <textarea class="form-control" id="field_text" name="text" rows="3"></textarea>
         </div>
