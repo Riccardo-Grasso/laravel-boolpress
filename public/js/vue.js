@@ -1396,7 +1396,7 @@ var render = function () {
                     _vm.postsList.length === 0
                       ? _c("h2", { staticClass: "mb-5 text-center" }, [
                           _vm._v(
-                            "\n              Ancora nessun dato disponibile...\n            "
+                            "\n              Nessun post disponibile\n            "
                           ),
                         ])
                       : _vm._l(_vm.postsList, function (post) {
@@ -1552,7 +1552,10 @@ var render = function () {
           _vm._v("By " + _vm._s(_vm.post.author)),
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.post.text))]),
+        _c("p", {
+          staticClass: "card-text",
+          domProps: { innerHTML: _vm._s(_vm.post.text) },
+        }),
       ]),
     ]),
   ])

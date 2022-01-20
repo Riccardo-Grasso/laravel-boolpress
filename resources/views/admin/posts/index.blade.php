@@ -30,7 +30,7 @@
                                   <h4 class="card-title">{{$post->title}}</h4>
                                   <h5 class="card-subtitle mb-2 text-muted">{{$post->subtitle}}</h5>
                                   <h6 class="card-subtitle mb-2 text-muted">By {{$post->author}}</h6>
-                                  <p class="card-text">{{ $post->text }}</p>
+                                  <p class="card-text">{!! $post->text !!}</p>
                                   <div class="d-flex align-items-center justify-content-between">
 
                                     <div>

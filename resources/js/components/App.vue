@@ -11,7 +11,7 @@
           <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
               <h2 class="mb-5 text-center" v-if="postsList.length === 0">
-                Ancora nessun dato disponibile...
+                Nessun post disponibile
               </h2>
 
               <template v-else>
