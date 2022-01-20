@@ -9,8 +9,8 @@
             <div class="card">
                 
                     <div class="card-header d-flex justify-content-between">
-                        <div>
-                            {{ __('Dashboard') }}
+                        <div class="d-flex align-items-center">
+                            {{ __('La mia Homepage') }}
                         </div>
                         <div>
                             <a class="card-link" href="{{route('admin.posts.index')}}"> <button type="button" class="btn btn-success"> POSTS </button> </a>
@@ -24,7 +24,9 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <p>Benvenuto {{ Auth::user()->name }}!</p> 
+                    <div>Per leggere la lista utenti clicca <a href="{{route('admin.users.index')}}">qui</a></div>
+
                 </div>
             </div>
         </div>
