@@ -68,10 +68,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
 
-        $post = Post::findOrFail($post);
+        $post = Post::findOrFail($id);
 
         $categories = Category::all();
 

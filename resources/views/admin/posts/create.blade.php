@@ -24,9 +24,7 @@
             <select name="category_id" id="category_id" class="form-control">
                 <option value="" disabled selected hidden>Scegli una categoria...</option>
                 @foreach ($categories as $category)
-                    <option value="{{$category->id}}" @if ($category->id === $post->category_id ) selected
-                        
-                    @endif >{{$category->name}}</option>
+                    <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
                 
             </select>
@@ -34,7 +32,7 @@
 
         <div class="mb-4">
             <label for="field_text" class="form-label">Testo</label>
-            <textarea class="form-control" id="field_text" name="text" rows="3"></textarea>
+            <textarea class="form-control" id="field_text" name="text" rows="3" value="ciao"></textarea>
         </div>
 
         <div class="mb-4">
@@ -48,7 +46,7 @@
         </div> --}}
 
         <div>
-            <button class="btn btn-danger" type="reset">Cancella</button>
+            <button class="btn btn-danger" type="reset">Svuota</button>
             <button class="btn btn-success" type="submit">Invia</button>
         </div>
     </form>

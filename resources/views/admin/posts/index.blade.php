@@ -25,17 +25,17 @@
                 <div class="row row-cols-1 mt-3 w-100">
                     @foreach ($posts as $post)
                         <div class="col">
-                            <div class="card my-3">
+                            <div class="card my-3 card-height" >
                                 <img src="{{$post->coverImg}}" class="card-img-top" alt="post_img">
-                                <div class="card-body">
+                                <div class="card-body article">
                                     <div class="d-flex justify-content-between">
                                         <h4 class="card-title">{{$post->title}}</h4>
 
                                         <div><span class="badge bg-primary" style="color: white">{{$post->category->name}}</span></div>
                                     </div>                         
                                     <h5 class="card-subtitle mb-2 text-muted">{{$post->subtitle}}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">By {{$post->user->name}}</h6>
-                                    <p class="card-text">{!! $post->text !!}</p>
+                                    <h6 class="card-subtitle mb-2 text-muted">Scritto da {{$post->user->name}}</h6>
+                                    <p class="card-text"> {!! $post->text !!}</p>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <a href="{{ route('admin.posts.show', $post->id) }}" class="card-link text-decoration-none">Continua a leggere...</a>

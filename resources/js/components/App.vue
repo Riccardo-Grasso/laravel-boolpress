@@ -40,9 +40,14 @@ export default {
     return {
       helloMsg: "Benvenuto nel Blog di Boolean",
       postsList: [],
+      categoryList: [],
     };
   },
   mounted() {
+    window.axios.get("/api/posts").then((resp) => {
+      this.postsList = resp.data;
+    });
+
     window.axios.get("/api/posts").then((resp) => {
       this.postsList = resp.data;
     });

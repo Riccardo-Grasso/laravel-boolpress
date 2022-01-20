@@ -34,16 +34,11 @@
 
         <div class="mb-4">
             <label for="field_text" class="form-label">Testo</label>
-            <textarea class="form-control" id="field_text" name="text" rows="3"></textarea>
-        </div>
-
-        <div class="mb-4">
-            <label for="field_author" class="form-label">Autore</label>
-            <input type="text" class="form-control" id="field_author" name="author" value="{{$post->author}}">
+            <textarea class="form-control" id="field_text" name="text" rows="3" value="{{$post->text}}"></textarea>
         </div>
 
         <div>
-            <button class="btn btn-danger" type="reset">Cancella</button>
+            <button class="btn btn-danger" type="reset">Svuota</button>
             <button class="btn btn-success" type="submit">Invia</button>
         </div>
     </form>
