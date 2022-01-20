@@ -10,10 +10,11 @@
 
   <div class="col">
     <div class="card my-3">
+      <img :src="post.coverImg" class="card-img-top" alt="post_img" />
       <div class="card-body">
         <h4 class="card-title">{{ post.title }}</h4>
         <h5 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">By {{ post.author }}</h6>
+        <!-- <h6 class="card-subtitle mb-2 text-muted">By {{ post.user.name }}</h6> -->
         <p class="card-text" v-html="post.text"></p>
       </div>
     </div>
