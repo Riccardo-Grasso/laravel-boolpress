@@ -36,7 +36,11 @@
         
             <select name="tags[]" class="form-control" multiple>
               @foreach($tags as $tag)
-              <option value="{{$tag->id}}">{{$tag->name}}
+                @php
+                    $exists = $post->tags->where("id", $tag->id)->count();
+                @endphp
+
+              <option value="{{$tag->id}}" @if ($exists) selected @endif>{{$tag->name}}
               </option>
               @endforeach
             </select>
