@@ -8,7 +8,7 @@
 
     <form action="{{route('admin.posts.update', $post->id)}}" method="post" class="w-50 mx-auto">
         @csrf
-        @method('PUT')
+        @method('patch')
 
         <div class="mb-4">
             <label for="field_title" class="form-label">Titolo</label>
@@ -22,13 +22,23 @@
 
         
         <div class="mb-4">
-            <label for="field_subtitle" class="form-label">Categoria</label>
+            <label for="field_category_id" class="form-label">Categoria</label>
             <select name="category_id" id="category_id" class="form-control">
                 <option value="" disabled selected hidden>Scegli una categoria...</option>
                 @foreach ($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
-                
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Tag</label>
+        
+            <select name="tags[]" class="form-control" multiple>
+              @foreach($tags as $tag)
+              <option value="{{$tag->id}}">{{$tag->name}}
+              </option>
+              @endforeach
             </select>
         </div>
 

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Post;
+use App\Tag;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -29,7 +30,12 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view("admin.posts.create", compact('categories'));
+        $tags = Tag::all();
+
+        return view("admin.posts.create", [
+            "categories" => $categories,
+            "tags" => $tags
+        ]);
     }
 
     /**
@@ -40,14 +46,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = $request->all();
+        $data = $request->all();
+        $post = new Post();
 
-        $newPost = new Post();
-        $newPost->fill($post);
-        $newPost->author_id = Auth::user()->id;
-        $newPost->save();
+        $post->fill($request->all());
+        $post->author_id = Auth::user()->id;
+        $post->save();
 
-        return redirect()->route("admin.posts.index", $newPost->id)->with("msg", "Post creato correttamente");
+        $post->tags()->sync($data["tags"]);
+
+        return redirect()->route("admin.posts.show", $post->id)->with("msg", "Post creato correttamente");
     }
 
     /**
@@ -68,16 +76,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-
-        $post = Post::findOrFail($id);
-
         $categories = Category::all();
+        $tags = Tag::all();
 
         return view("admin.posts.edit", [
             "post" => $post,
-            "categories" => $categories
+            "categories" => $categories,
+            "tags" => $tags
         ]);
     }
 
@@ -90,10 +97,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $formData = $request->all();
+        $data = $request->all();
+        $post->update($data);
 
-        $post->update($formData);
-        return redirect()->route("admin.posts.index", $post->id)->with("msg", "Post modificato correttamente");
+        $post->tags()->sync($data["tags"]);
+
+        return redirect()->route("admin.posts.show", $post->id)->with("msg", "Post modificato correttamente");
     }
 
     /**
