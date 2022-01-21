@@ -42,7 +42,7 @@
                                     </div>                         
                                     <h5 class="card-subtitle mb-2 text-muted">{{$post->subtitle}}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">Scritto da {{$post->user->name}}</h6>
-                                    <p class="card-text"> {!! $post->text !!}</p>
+                                    <p class="card-text">{{substr(strip_tags($post->text), 0, 100)}}...</p>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <a href="{{ route('admin.posts.show', $post->id) }}" class="card-link text-decoration-none">Continua a leggere...</a>

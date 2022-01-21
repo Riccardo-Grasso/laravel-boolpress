@@ -12,13 +12,23 @@
     <div class="card my-3">
       <img :src="post.coverImg" class="card-img-top" alt="post_img" />
       <div class="card-body article">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mb-2">
           <h4 class="card-title">{{ post.title }}</h4>
-
-          <div>
-            <span class="badge bg-primary" style="color: white">{{
-              post.category.name
-            }}</span>
+          <div class="text-cont">
+            <div>
+              <strong
+                ><em> Categoria: {{ post.category.name }}</em></strong
+              >
+            </div>
+            <div>
+              <span
+                v-for="tag in post.tags"
+                :key="tag.id"
+                class="badge bg-success ml-1"
+                style="color: white"
+                >{{ tag.name }}</span
+              >
+            </div>
           </div>
         </div>
         <h5 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h5>
@@ -44,22 +54,18 @@ export default {
 </script>
 
 <style>
-.article {
-  position: relative;
+.text-cont {
+  text-align: end;
 }
 
-.article:after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  content: "";
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 1) 24%,
-    rgba(255, 255, 255, 0) 76%
-  );
-  pointer-events: none; /* so the text is still selectable */
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-body {
+  height: 250px;
+  overflow: hidden;
 }
 </style>

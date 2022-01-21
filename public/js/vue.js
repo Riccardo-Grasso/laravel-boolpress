@@ -149,9 +149,6 @@ __webpack_require__.r(__webpack_exports__);
     window.axios.get("/api/posts").then(function (resp) {
       _this.postsList = resp.data;
     });
-    window.axios.get("/api/posts").then(function (resp) {
-      _this.postsList = resp.data;
-    });
   }
 });
 
@@ -247,6 +244,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
@@ -290,7 +297,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.article {\r\n  position: relative;\n}\n.article:after {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  height: 100%;\r\n  width: 100%;\r\n  content: \"\";\r\n  background: linear-gradient(\r\n    to top,\r\n    rgba(255, 255, 255, 1) 24%,\r\n    rgba(255, 255, 255, 0) 76%\r\n  );\r\n  pointer-events: none; /* so the text is still selectable */\n}\r\n", ""]);
+exports.push([module.i, "\n.text-cont {\r\n  text-align: end;\n}\n.card-img-top {\r\n  height: 250px;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  -o-object-position: center;\r\n     object-position: center;\n}\n.card-body {\r\n  height: 250px;\r\n  overflow: hidden;\n}\r\n", ""]);
 
 // exports
 
@@ -1609,19 +1616,34 @@ var render = function () {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body article" }, [
-        _c("div", { staticClass: "d-flex justify-content-between" }, [
+        _c("div", { staticClass: "d-flex justify-content-between mb-2" }, [
           _c("h4", { staticClass: "card-title" }, [
             _vm._v(_vm._s(_vm.post.title)),
           ]),
           _vm._v(" "),
-          _c("div", [
+          _c("div", { staticClass: "text-cont" }, [
+            _c("div", [
+              _c("strong", [
+                _c("em", [
+                  _vm._v(" Categoria: " + _vm._s(_vm.post.category.name)),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
             _c(
-              "span",
-              {
-                staticClass: "badge bg-primary",
-                staticStyle: { color: "white" },
-              },
-              [_vm._v(_vm._s(_vm.post.category.name))]
+              "div",
+              _vm._l(_vm.post.tags, function (tag) {
+                return _c(
+                  "span",
+                  {
+                    key: tag.id,
+                    staticClass: "badge bg-success ml-1",
+                    staticStyle: { color: "white" },
+                  },
+                  [_vm._v(_vm._s(tag.name))]
+                )
+              }),
+              0
             ),
           ]),
         ]),
