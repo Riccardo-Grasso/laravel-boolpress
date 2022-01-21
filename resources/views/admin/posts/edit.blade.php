@@ -34,7 +34,7 @@
 
         <div class="mb-4">
             <label for="field_text" class="form-label">Testo</label>
-            <textarea class="form-control" id="field_text" name="text" rows="3" value="{{$post->text}}"></textarea>
+            <textarea class="form-control" id="field_text" name="text" rows="3" value="{{$post->text}}">{!! $post->text !!}</textarea>
         </div>
 
         <div>
