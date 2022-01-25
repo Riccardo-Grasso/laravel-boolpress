@@ -254,12 +254,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
     post: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    creationDate: function creationDate() {
+      return window.dayjs(this.post.created_at).format("DD/MM/YYYY");
     }
   }
 });
@@ -1654,7 +1660,11 @@ var render = function () {
         _vm._v(" "),
         _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
           _vm._v(
-            "\n        Scritto da " + _vm._s(_vm.post.user.name) + "\n      "
+            "\n        Scritto da " +
+              _vm._s(_vm.post.user.name) +
+              " -\n        " +
+              _vm._s(_vm.creationDate) +
+              "\n      "
           ),
         ]),
         _vm._v(" "),

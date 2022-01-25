@@ -33,7 +33,8 @@
         </div>
         <h5 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">
-          Scritto da {{ post.user.name }}
+          Scritto da {{ post.user.name }} -
+          {{ creationDate }}
         </h6>
         <p class="card-text" v-html="post.text"></p>
       </div>
@@ -48,6 +49,11 @@ export default {
     post: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    creationDate() {
+      return window.dayjs(this.post.created_at).format("DD/MM/YYYY");
     },
   },
 };
