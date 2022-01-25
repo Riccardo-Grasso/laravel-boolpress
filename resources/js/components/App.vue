@@ -23,6 +23,36 @@
               </template>
             </div>
           </div>
+          <div class="row">
+            <div class="col d-flex justify-content-center">
+              <nav>
+                <ul class="pagination">
+                  <li>
+                    <button class="page-link" @click="getData(currentPage - 1)">
+                      Indietro
+                    </button>
+                  </li>
+
+                  <li
+                    v-for="page of lastPage"
+                    :key="page"
+                    class="page-item"
+                    :class="{ active: currentPage === page }"
+                  >
+                    <button class="page-link" @click="getData(page)">
+                      {{ page }}
+                    </button>
+                  </li>
+
+                  <li>
+                    <button class="page-link" @click="getData(currentPage + 1)">
+                      Avanti
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -41,12 +71,21 @@ export default {
       helloMsg: "Benvenuto nel Blog di Boolean",
       postsList: [],
       categoryList: [],
+      currentPage: 1,
+      lastPage: null,
     };
   },
+  methods: {
+    getData(page = 1) {
+      window.axios.get("/api/posts?page=" + page).then((resp) => {
+        this.postsList = resp.data.data;
+        this.currentPage = resp.data.current_page;
+        this.lastPage = resp.data.last_page;
+      });
+    },
+  },
   mounted() {
-    window.axios.get("/api/posts").then((resp) => {
-      this.postsList = resp.data;
-    });
+    this.getData();
   },
 };
 </script>
