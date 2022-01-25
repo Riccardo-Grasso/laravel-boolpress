@@ -58,7 +58,10 @@
                         </div>
                     @endforeach
                 </div>
-
+                <div class="d-flex justify-content-center my-3">
+                    {!! $posts->links() !!}
+                </div>
+                
             </div>
         </div>
     </div>
