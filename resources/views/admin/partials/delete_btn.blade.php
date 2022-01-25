@@ -1,4 +1,4 @@
-<form action="{{ route("admin.posts.destroy", $post->id)}}" method="post" class="form-delete">
+<form action="{{ route("admin.posts.destroy", $post->slug)}}" method="post" class="form-delete">
     @csrf
     @method("delete")
     

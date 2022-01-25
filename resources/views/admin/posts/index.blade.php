@@ -45,8 +45,8 @@
                                     <p class="card-text">{{substr(strip_tags($post->text), 0, 100)}}...</p>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
-                                            <a href="{{ route('admin.posts.show', $post->id) }}" class="card-link text-decoration-none">Continua a leggere...</a>
-                                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="card-link text-decoration-none">Modifica</a>
+                                            <a href="{{ route('admin.posts.show', $post->slug) }}" class="card-link text-decoration-none">Continua a leggere...</a>
+                                            <a href="{{ route('admin.posts.edit', $post->slug) }}" class="card-link text-decoration-none">Modifica</a>
                                         </div>
                                         
                                         @include('admin.partials.delete_btn')

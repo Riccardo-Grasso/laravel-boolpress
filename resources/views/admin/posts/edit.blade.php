@@ -6,7 +6,7 @@
 <div class="container py-5" style="background-color: white">
     <h2 class="mb-5 text-center">Modifica i dati di {{ $post->title}}</h2> 
 
-    <form action="{{route('admin.posts.update', $post->id)}}" method="post" class="w-50 mx-auto">
+    <form action="{{route('admin.posts.update', $post->slug)}}" method="post" class="w-50 mx-auto">
         @csrf
         @method('patch')
 

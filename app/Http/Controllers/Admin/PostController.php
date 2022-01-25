@@ -8,9 +8,32 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+
+    private function generateSlug($title)
+    {
+        $slug = Str::slug($title);
+        $alreadyExists = Post::where("slug", $slug)->first();
+        $counter = 1;
+
+        while ($alreadyExists) {
+            $newSlug = $slug . "-" . $counter;
+
+            $alreadyExists = Post::where("slug", $newSlug)->first();
+            $counter++;
+
+            if (!$alreadyExists) {
+                $slug = $newSlug;
+            }
+        }
+
+        return $slug;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -50,12 +73,14 @@ class PostController extends Controller
         $post = new Post();
 
         $post->fill($request->all());
+        $post->slug = $this->generateSlug($data['title ']);
+
         $post->author_id = Auth::user()->id;
         $post->save();
 
         $post->tags()->sync($data["tags"]);
 
-        return redirect()->route("admin.posts.show", $post->id)->with("msg", "Post creato correttamente");
+        return redirect()->route("admin.posts.show", $post->slug)->with("msg", "Post creato correttamente");
     }
 
     /**
@@ -64,9 +89,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::where("slug", $slug)->first();
         return view("admin.posts.show", compact("post"));
     }
 
@@ -76,8 +101,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($slug)
     {
+        $post = Post::where("slug", $slug)->first();
         $categories = Category::all();
         $tags = Tag::all();
 
@@ -95,14 +121,24 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $slug)
     {
+        $post = Post::where("slug", $slug)->first();
         $data = $request->all();
+        $oldTitle = $post->title;
+
+        $titleChanged = $oldTitle !== $data["title"];
+
         $post->update($data);
+
+        if ($titleChanged) {
+            $post->slug = $this->generateSlug($data["title"]);
+            $post->save();
+        }
 
         $post->tags()->sync($data["tags"]);
 
-        return redirect()->route("admin.posts.show", $post->id)->with("msg", "Post modificato correttamente");
+        return redirect()->route("admin.posts.show", $post->slug)->with("msg", "Post modificato correttamente");
     }
 
     /**
@@ -111,9 +147,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::where("slug", $slug)->first();
         $post->delete();
         return redirect()->route("admin.posts.index")->with("msg", "Post eliminato");
     }
