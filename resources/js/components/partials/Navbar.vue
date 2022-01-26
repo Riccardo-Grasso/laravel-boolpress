@@ -17,14 +17,32 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto py-4 py-lg-0">
           <li class="nav-item">
-            <a class="nav-link text-white px-lg-3 py-3 py-lg-4" href="/"
-              >Home</a
+            <router-link class="nav-link text-white px-lg-3 py-3 py-lg-4" to="/"
+              >Home</router-link
             >
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-white px-lg-3 py-3 py-lg-4" href="login"
-              >Login</a
+            <router-link
+              class="nav-link text-white px-lg-3 py-3 py-lg-4"
+              to="/contact"
+              >Contatti</router-link
+            >
+          </li>
+
+          <li class="nav-item">
+            <router-link
+              class="nav-link text-white px-lg-3 py-3 py-lg-4"
+              to="/about"
+              >Chi Siamo</router-link
+            >
+          </li>
+
+          <li class="nav-item">
+            <router-link
+              class="nav-link text-white px-lg-3 py-3 py-lg-4"
+              to="/login"
+              >Login</router-link
             >
           </li>
         </ul>

@@ -168,6 +168,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1605,7 +1623,99 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "nav",
+    {
+      staticClass: "navbar navbar-expand-lg navbar-light",
+      attrs: { id: "mainNav" },
+    },
+    [
+      _c("div", { staticClass: "container px-4 px-lg-5" }, [
+        _c(
+          "a",
+          { staticClass: "navbar-brand text-white", attrs: { href: "/" } },
+          [_vm._v("Boolean Blog")]
+        ),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "collapse navbar-collapse",
+            attrs: { id: "navbarResponsive" },
+          },
+          [
+            _c("ul", { staticClass: "navbar-nav ms-auto py-4 py-lg-0" }, [
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link text-white px-lg-3 py-3 py-lg-4",
+                      attrs: { to: "/" },
+                    },
+                    [_vm._v("Home")]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link text-white px-lg-3 py-3 py-lg-4",
+                      attrs: { to: "/contact" },
+                    },
+                    [_vm._v("Contatti")]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link text-white px-lg-3 py-3 py-lg-4",
+                      attrs: { to: "/about" },
+                    },
+                    [_vm._v("Chi Siamo")]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link text-white px-lg-3 py-3 py-lg-4",
+                      attrs: { to: "/login" },
+                    },
+                    [_vm._v("Login")]
+                  ),
+                ],
+                1
+              ),
+            ]),
+          ]
+        ),
+      ]),
+    ]
+  )
 }
 var staticRenderFns = [
   function () {
@@ -1613,72 +1723,19 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "nav",
+      "button",
       {
-        staticClass: "navbar navbar-expand-lg navbar-light",
-        attrs: { id: "mainNav" },
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-bs-toggle": "collapse",
+          "data-bs-target": "#navbarResponsive",
+          "aria-controls": "navbarResponsive",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation",
+        },
       },
-      [
-        _c("div", { staticClass: "container px-4 px-lg-5" }, [
-          _c(
-            "a",
-            { staticClass: "navbar-brand text-white", attrs: { href: "/" } },
-            [_vm._v("Boolean Blog")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "navbar-toggler",
-              attrs: {
-                type: "button",
-                "data-bs-toggle": "collapse",
-                "data-bs-target": "#navbarResponsive",
-                "aria-controls": "navbarResponsive",
-                "aria-expanded": "false",
-                "aria-label": "Toggle navigation",
-              },
-            },
-            [
-              _vm._v("\n      Menu\n      "),
-              _c("i", { staticClass: "fas fa-bars" }),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "collapse navbar-collapse",
-              attrs: { id: "navbarResponsive" },
-            },
-            [
-              _c("ul", { staticClass: "navbar-nav ms-auto py-4 py-lg-0" }, [
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link text-white px-lg-3 py-3 py-lg-4",
-                      attrs: { href: "/" },
-                    },
-                    [_vm._v("Home")]
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link text-white px-lg-3 py-3 py-lg-4",
-                      attrs: { href: "login" },
-                    },
-                    [_vm._v("Login")]
-                  ),
-                ]),
-              ]),
-            ]
-          ),
-        ]),
-      ]
+      [_vm._v("\n      Menu\n      "), _c("i", { staticClass: "fas fa-bars" })]
     )
   },
 ]
