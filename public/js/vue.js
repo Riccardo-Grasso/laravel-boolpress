@@ -436,9 +436,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      post: {
+        type: Object,
+        "default": function _default() {
+          return {};
+        }
+      }
+    };
+  },
   methods: {
     fetchPost: function fetchPost() {
-      window.axios.get("/api/posts/" + this.$route.params.slug);
+      var url = "/api/posts/" + this.$route.params.slug;
+      window.axios.get(url).then(function (resp) {
+        console.log(resp);
+      });
     }
   },
   mounted: function mounted() {
@@ -2096,22 +2109,15 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "my-container rounded p-5 mb-5" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", [_c("h1", [_vm._v("Post")])]),
-        ]),
+  return _c("div", [
+    _c("div", { staticClass: "my-container rounded p-5 mb-5" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", [_c("h1", [_vm._v(_vm._s(_vm.post.title))])]),
       ]),
-    ])
-  },
-]
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
