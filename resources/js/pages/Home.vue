@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="posts-container rounded p-5 mb-5">
+    <div class="title-container text-center my-5">
+      <h1 class="title">{{ helloMsg }}</h1>
+    </div>
+    <div class="my-container rounded p-5 mb-5">
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
@@ -58,6 +61,7 @@ export default {
   components: { Post },
   data() {
     return {
+      helloMsg: "Benvenuto nel Blog di Boolean",
       postsList: [],
       categoryList: [],
       currentPage: 1,

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
-      <a class="navbar-brand text-white" href="/">Boolean Blog</a>
+      <a class="navbar-brand text-white" href="/"> Boolean Blog </a>
       <button
         class="navbar-toggler"
         type="button"

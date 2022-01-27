@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
 import Contact from "./pages/Contact.vue";
-import Posts from "./pages/Posts.vue";
+import PostsShow from "./pages/posts/Show.vue";
 
 Vue.use(VueRouter);
 
@@ -14,22 +14,25 @@ const router = new VueRouter({
         {
             path: "/",
             name: "home",
-            component: Home
+            component: Home,
+            meta: {
+                title: "La tua Homepage"
+            }
         },
         {
-            path: "/about",
-            name: "about",
+            path: "/about/:slug",
+            name: "about.show",
             component: About
         },
         {
-            path: "/contact",
-            name: "contact",
+            path: "/contact/:slug",
+            name: "contact.show",
             component: Contact
         },
         {
-            path: "/posts",
-            name: "posts",
-            component: Posts
+            path: "/posts/:slug",
+            name: "posts.show",
+            component: PostsShow
         }
     ]
 });

@@ -2,10 +2,8 @@
   <div>
     <div class="container">
       <Navbar></Navbar>
-      <div class="title-container text-center my-5">
-        <h1 class="title">{{ helloMsg }}</h1>
-      </div>
 
+      <!-- inserisce il contenuto delle pages -->
       <router-view></router-view>
     </div>
   </div>

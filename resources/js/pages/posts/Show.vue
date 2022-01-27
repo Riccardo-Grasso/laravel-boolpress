@@ -3,7 +3,7 @@
     <div class="my-container rounded p-5 mb-5">
       <div class="container">
         <div>
-          <h1>Contattaci</h1>
+          <h1>Post</h1>
         </div>
       </div>
     </div>
@@ -11,7 +11,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    fetchPost() {
+      window.axios.get("/api/posts/" + this.$route.params.slug);
+    },
+  },
+  mounted() {
+    this.fetchPost();
+  },
+};
 </script>
 
 <style>
