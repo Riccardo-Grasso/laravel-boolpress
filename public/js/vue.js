@@ -435,6 +435,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -448,9 +476,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fetchPost: function fetchPost() {
+      var _this = this;
+
       var url = "/api/posts/" + this.$route.params.slug;
       window.axios.get(url).then(function (resp) {
-        console.log(resp);
+        _this.post = resp.data;
       });
     }
   },
@@ -2112,7 +2142,47 @@ var render = function () {
   return _c("div", [
     _c("div", { staticClass: "my-container rounded p-5 mb-5" }, [
       _c("div", { staticClass: "container" }, [
-        _c("div", [_c("h1", [_vm._v(_vm._s(_vm.post.title))])]),
+        _c("div", [
+          _c("img", {
+            staticClass: "w-100",
+            attrs: { src: _vm.post.coverImg, alt: "post_img" },
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body article" }, [
+            _c("div", { staticClass: "d-flex justify-content-between mb-2" }, [
+              _c("h4", { staticClass: "card-title" }, [
+                _vm._v(_vm._s(_vm.post.title)),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-cont" }, [
+                _c(
+                  "div",
+                  _vm._l(_vm.post.tags, function (tag) {
+                    return _c(
+                      "span",
+                      {
+                        key: tag.id,
+                        staticClass: "badge bg-success ml-1",
+                        staticStyle: { color: "white" },
+                      },
+                      [_vm._v(_vm._s(tag.name))]
+                    )
+                  }),
+                  0
+                ),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("h5", { staticClass: "card-subtitle mb-2 text-muted" }, [
+              _vm._v(_vm._s(_vm.post.subtitle)),
+            ]),
+            _vm._v(" "),
+            _c("p", {
+              staticClass: "card-text",
+              domProps: { innerHTML: _vm._s(_vm.post.text) },
+            }),
+          ]),
+        ]),
       ]),
     ]),
   ])
