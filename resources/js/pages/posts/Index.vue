@@ -70,11 +70,20 @@ export default {
   },
   methods: {
     getData(page = 1) {
-      window.axios.get("/api/posts?page=" + page).then((resp) => {
-        this.postsList = resp.data.data;
-        this.currentPage = resp.data.current_page;
-        this.lastPage = resp.data.last_page;
-      });
+      const category = this.$route.query.category;
+
+      window.axios
+        .get("/api/posts", {
+          params: {
+            page,
+            category,
+          },
+        })
+        .then((resp) => {
+          this.postsList = resp.data.data;
+          this.currentPage = resp.data.current_page;
+          this.lastPage = resp.data.last_page;
+        });
     },
   },
   mounted() {

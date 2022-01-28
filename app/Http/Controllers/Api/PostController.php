@@ -12,16 +12,21 @@ class PostController extends Controller
     function index(Request $request)
     {
         $limit = $request->query("limit");
+        $category = $request->query("category");
 
         $postsList = Post::with("category")
             ->with("user")
             ->with("tags")
             ->orderBy("created_at", "DESC");
 
+        if ($category) {
+            $postsList = $postsList->where("category_id", $category);
+        }
+
         if ($limit) {
             $postsList = $postsList->limit($limit)->get();
         } else {
-            $postsList = $postsList->paginate(3);
+            $postsList = $postsList->paginate(5);
         }
 
         foreach ($postsList as $post) {

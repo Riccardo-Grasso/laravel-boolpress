@@ -10985,3 +10985,12 @@ body .title-container .title {
      object-position: center;
 }
 
+.router-link-exact-active {
+  color: #8185fe !important;
+  background-color: white;
+}
+
+.categories-list {
+  list-style-type: disclosure-closed;
+}
+

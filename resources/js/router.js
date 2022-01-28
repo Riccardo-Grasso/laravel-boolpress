@@ -6,6 +6,7 @@ import About from "./pages/About.vue";
 import Contact from "./pages/Contact.vue";
 import PostsIndex from "./pages/posts/Index.vue";
 import PostsShow from "./pages/posts/Show.vue";
+import CategoryShow from "./pages/category/Show.vue";
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,11 @@ const router = new VueRouter({
             path: "/about",
             name: "about.show",
             component: About
+        },
+        {
+            path: "/categories/:category",
+            name: "category.show",
+            component: CategoryShow,
         },
         {
             path: "/contact/",

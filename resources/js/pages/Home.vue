@@ -4,9 +4,35 @@
       <h1 class="title">{{ helloMsg }}</h1>
     </div>
     <div class="my-container rounded p-5 mb-5">
+      <!-- main -->
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="col-9">
+            <h3>
+              Ultimi
+              <select
+                class="form-select d-inline-block"
+                style="width: 80px"
+                @change="onLimitChange($event)"
+              >
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+              </select>
+              post
+            </h3>
+
+            <div class="progress" v-if="loading">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated"
+                role="progressbar"
+                aria-valuenow="100"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 100%"
+              ></div>
+            </div>
+
             <h2 class="mb-5 text-center" v-if="postsList.length === 0">
               Nessun post disponibile
             </h2>
@@ -19,8 +45,24 @@
               ></Post>
             </template>
           </div>
+          <!-- Sidebar -->
+          <div class="col-3">
+            <h3>Lista categorie</h3>
+            <ul class="categories-list">
+              <li v-for="category in categoriesList" :key="category.id">
+                <router-link
+                  :to="{
+                    name: 'posts.index',
+                    query: { category: category.id },
+                  }"
+                >
+                  {{ category.name }}
+                </router-link>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="row">
+        <!--         <div class="row">
           <div class="col d-flex justify-content-center">
             <nav>
               <ul class="pagination">
@@ -49,7 +91,7 @@
               </ul>
             </nav>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -63,22 +105,33 @@ export default {
     return {
       helloMsg: "Benvenuto nel Blog di Boolean",
       postsList: [],
-      categoryList: [],
-      currentPage: 1,
-      lastPage: null,
+      categoriesList: [],
+      loading: true,
     };
   },
   methods: {
-    getData(page = 1) {
-      window.axios.get("/api/posts?page=" + page).then((resp) => {
-        this.postsList = resp.data.data;
-        this.currentPage = resp.data.current_page;
-        this.lastPage = resp.data.last_page;
+    getData(limit = 5) {
+      window.axios.get("/api/posts?limit=" + limit).then((resp) => {
+        this.postsList = resp.data;
+        this.loading = false;
       });
+    },
+
+    getCategories() {
+      window.axios.get("/api/categories").then((resp) => {
+        this.categoriesList = resp.data;
+      });
+    },
+
+    onLimitChange(event) {
+      const limit = event.target.value;
+
+      this.getData(limit);
     },
   },
   mounted() {
     this.getData();
+    this.getCategories();
   },
 };
 </script>
