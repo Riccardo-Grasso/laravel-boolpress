@@ -11,7 +11,18 @@ class PostController extends Controller
 {
     function index(Request $request)
     {
-        $postsList = Post::with("category")->with("user")->with("tags")->paginate(2);
+        $limit = $request->query("limit");
+
+        $postsList = Post::with("category")
+            ->with("user")
+            ->with("tags")
+            ->orderBy("created_at", "DESC");
+
+        if ($limit) {
+            $postsList = $postsList->limit($limit)->get();
+        } else {
+            $postsList = $postsList->paginate(3);
+        }
 
         foreach ($postsList as $post) {
             $text = strip_tags($post->text);

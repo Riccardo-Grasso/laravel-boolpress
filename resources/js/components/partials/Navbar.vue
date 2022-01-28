@@ -25,6 +25,14 @@
           <li class="nav-item">
             <router-link
               class="nav-link text-white px-lg-3 py-3 py-lg-4"
+              to="/posts"
+              >Posts</router-link
+            >
+          </li>
+
+          <li class="nav-item">
+            <router-link
+              class="nav-link text-white px-lg-3 py-3 py-lg-4"
               to="/contact"
               >Contatti</router-link
             >
@@ -39,10 +47,8 @@
           </li>
 
           <li class="nav-item">
-            <router-link
-              class="nav-link text-white px-lg-3 py-3 py-lg-4"
-              to="/login"
-              >Login</router-link
+            <a class="nav-link text-white px-lg-3 py-3 py-lg-4" href="login"
+              >Login</a
             >
           </li>
         </ul>

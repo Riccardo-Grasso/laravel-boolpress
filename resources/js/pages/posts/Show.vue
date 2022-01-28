@@ -26,9 +26,8 @@
               </div>
             </div>
             <h5 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h5>
-            <!--      <h6 class="card-subtitle mb-2 text-muted">
-              Scritto da {{ post.user.name }} -
-              {{ creationDate }}
+            <!--             <h6 class="card-subtitle mb-2 text-muted">
+              Scritto da {{ post.author_id }} - {{ post.created_at }}
             </h6> -->
             <p class="card-text" v-html="post.text"></p>
           </div>
@@ -43,6 +42,10 @@ export default {
   data() {
     return {
       post: {
+        type: Object,
+        default: () => ({}),
+      },
+      tag: {
         type: Object,
         default: () => ({}),
       },
