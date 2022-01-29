@@ -9,11 +9,11 @@
               <h4 class="card-title">{{ post.title }}</h4>
 
               <div class="text-cont">
-                <!--   <div>
+                <div>
                   <strong
                     ><em> Categoria: {{ post.category.name }}</em></strong
                   >
-                </div> -->
+                </div>
                 <div>
                   <span
                     v-for="tag in post.tags"
@@ -26,9 +26,9 @@
               </div>
             </div>
             <h5 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h5>
-            <!--             <h6 class="card-subtitle mb-2 text-muted">
-              Scritto da {{ post.author_id }} - {{ post.created_at }}
-            </h6> -->
+            <h6 class="card-subtitle mb-2 text-muted">
+              Scritto da {{ post.user.name }} - {{ creationDate }}
+            </h6>
             <p class="card-text" v-html="post.text"></p>
           </div>
         </div>
@@ -45,10 +45,6 @@ export default {
         type: Object,
         default: () => ({}),
       },
-      tag: {
-        type: Object,
-        default: () => ({}),
-      },
     };
   },
   methods: {
@@ -56,11 +52,17 @@ export default {
       const url = "/api/posts/" + this.$route.params.slug;
       window.axios.get(url).then((resp) => {
         this.post = resp.data;
+        console.log(this.post);
       });
     },
   },
   mounted() {
     this.fetchPost();
+  },
+  computed: {
+    creationDate() {
+      return window.dayjs(this.post.created_at).format("DD/MM/YYYY");
+    },
   },
 };
 </script>

@@ -697,12 +697,6 @@ __webpack_require__.r(__webpack_exports__);
         "default": function _default() {
           return {};
         }
-      },
-      tag: {
-        type: Object,
-        "default": function _default() {
-          return {};
-        }
       }
     };
   },
@@ -713,11 +707,17 @@ __webpack_require__.r(__webpack_exports__);
       var url = "/api/posts/" + this.$route.params.slug;
       window.axios.get(url).then(function (resp) {
         _this.post = resp.data;
+        console.log(_this.post);
       });
     }
   },
   mounted: function mounted() {
     this.fetchPost();
+  },
+  computed: {
+    creationDate: function creationDate() {
+      return window.dayjs(this.post.created_at).format("DD/MM/YYYY");
+    }
   }
 });
 
@@ -2569,6 +2569,14 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "text-cont" }, [
+                _c("div", [
+                  _c("strong", [
+                    _c("em", [
+                      _vm._v(" Categoria: " + _vm._s(_vm.post.category.name)),
+                    ]),
+                  ]),
+                ]),
+                _vm._v(" "),
                 _c(
                   "div",
                   _vm._l(_vm.post.tags, function (tag) {
@@ -2589,6 +2597,16 @@ var render = function () {
             _vm._v(" "),
             _c("h5", { staticClass: "card-subtitle mb-2 text-muted" }, [
               _vm._v(_vm._s(_vm.post.subtitle)),
+            ]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+              _vm._v(
+                "\n            Scritto da " +
+                  _vm._s(_vm.post.user.name) +
+                  " - " +
+                  _vm._s(_vm.creationDate) +
+                  "\n          "
+              ),
             ]),
             _vm._v(" "),
             _c("p", {
