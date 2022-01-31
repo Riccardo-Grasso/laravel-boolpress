@@ -14,7 +14,11 @@
       :to="{ name: 'posts.show', params: { slug: post.slug } }"
     >
       <div class="card my-3">
-        <img :src="post.coverImg" class="card-img-top" alt="post_img" />
+        <img
+          :src="'/storage/' + post.coverImg"
+          class="card-img-top"
+          alt="post_img"
+        />
         <div class="card-body article">
           <div class="d-flex justify-content-between mb-2">
             <h4 class="card-title">{{ post.title }}</h4>

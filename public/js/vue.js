@@ -253,6 +253,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
@@ -689,6 +693,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -697,7 +705,8 @@ __webpack_require__.r(__webpack_exports__);
         "default": function _default() {
           return {};
         }
-      }
+      },
+      loading: true
     };
   },
   methods: {
@@ -2100,7 +2109,7 @@ var render = function () {
           _c("div", { staticClass: "card my-3" }, [
             _c("img", {
               staticClass: "card-img-top",
-              attrs: { src: _vm.post.coverImg, alt: "post_img" },
+              attrs: { src: "/storage/" + _vm.post.coverImg, alt: "post_img" },
             }),
             _vm._v(" "),
             _c("div", { staticClass: "card-body article" }, [
@@ -2559,7 +2568,10 @@ var render = function () {
             _c("div", [
               _c("img", {
                 staticClass: "w-100",
-                attrs: { src: _vm.post.coverImg, alt: "post_img" },
+                attrs: {
+                  src: "/storage/" + _vm.post.coverImg,
+                  alt: "post_img",
+                },
               }),
               _vm._v(" "),
               _c("div", { staticClass: "card-body article" }, [

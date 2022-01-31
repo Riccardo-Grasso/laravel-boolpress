@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
@@ -8,6 +9,7 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -73,9 +75,13 @@ class PostController extends Controller
         $post = new Post();
 
         $post->fill($request->all());
-        $post->slug = $this->generateSlug($data['title ']);
+        $post->slug = $this->generateSlug($data['title']);
 
         $post->author_id = Auth::user()->id;
+
+        if ($request->file("coverImg")) {
+            $post->coverImg = Storage::put("posts", $data["coverImg"]);
+        }
         $post->save();
 
         $post->tags()->sync($data["tags"]);
@@ -123,19 +129,30 @@ class PostController extends Controller
      */
     public function update(Request $request, $slug)
     {
+
         $post = Post::where("slug", $slug)->first();
         $data = $request->all();
         $oldTitle = $post->title;
-
+        $oldCoverImg = $post->coverImg;
         $titleChanged = $oldTitle !== $data["title"];
 
-        $post->update($data);
+        /*      $post->update($data); */
+        $post->fill($data);
+
+        /* Per eliminare le vecchie cover */
+        if ($request->file("coverImg")) {
+            if ($oldCoverImg) {
+                Storage::delete($oldCoverImg);
+            }
+
+            // $post->coverImg = Storage::put("posts", $data["coverImg"]);
+            $post->coverImg = $request->file("coverImg")->store("posts");
+        }
 
         if ($titleChanged) {
             $post->slug = $this->generateSlug($data["title"]);
-            $post->save();
         }
-
+        $post->save();
         $post->tags()->sync($data["tags"]);
 
         return redirect()->route("admin.posts.show", $post->slug)->with("msg", "Post modificato correttamente");

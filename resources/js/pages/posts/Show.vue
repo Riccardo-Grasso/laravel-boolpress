@@ -3,7 +3,11 @@
     <div class="my-container rounded p-5 mb-5">
       <div class="container">
         <div>
-          <img :src="post.coverImg" class="w-100" alt="post_img" />
+          <img
+            :src="'/storage/' + post.coverImg"
+            class="w-100"
+            alt="post_img"
+          />
           <div class="card-body article">
             <div class="d-flex justify-content-between mb-2">
               <h4 class="card-title">{{ post.title }}</h4>
@@ -45,6 +49,7 @@ export default {
         type: Object,
         default: () => ({}),
       },
+      loading: true,
     };
   },
   methods: {

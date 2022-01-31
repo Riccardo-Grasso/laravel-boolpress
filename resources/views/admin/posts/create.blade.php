@@ -6,7 +6,7 @@
 <div class="container py-5" style="background-color: white">
     <h2 class="">Nuovo Post</h2> 
 
-    <form action="{{route('admin.posts.store')}}" method="post" class="w-50 mx-auto">
+    <form action="{{route('admin.posts.store')}}" method="post" class="w-50 mx-auto" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-4">
@@ -47,7 +47,7 @@
 
         <div class="mb-4">
             <label for="field_coverImg" class="form-label">Immagine di copertina</label>
-            <input type="text" class="form-control" id="field_coverImg" name="coverImg">
+            <input type="file" class="form-control" id="field_coverImg" name="coverImg">
         </div>
 
 {{--         <div class="mb-4">

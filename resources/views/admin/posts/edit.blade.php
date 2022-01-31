@@ -6,7 +6,7 @@
 <div class="container py-5" style="background-color: white">
     <h2 class="mb-5 text-center">Modifica i dati di {{ $post->title}}</h2> 
 
-    <form action="{{route('admin.posts.update', $post->slug)}}" method="post" class="w-50 mx-auto">
+    <form action="{{route('admin.posts.update', $post->slug)}}" method="post" class="w-50 mx-auto" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -53,7 +53,7 @@
 
         <div class="mb-4">
             <label for="field_coverImg" class="form-label">Immagine di copertina</label>
-            <input type="text" class="form-control" id="field_coverImg" name="coverImg" value="{{$post->coverImg}}">
+            <input type="file" class="form-control" id="field_coverImg" name="coverImg" value="{{$post->coverImg}}">
         </div>
 
         <div>

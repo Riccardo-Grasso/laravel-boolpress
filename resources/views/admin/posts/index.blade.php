@@ -26,7 +26,7 @@
                     @foreach ($posts as $post)
                         <div class="col">
                             <div class="card my-3 card-height" >
-                                <img src="{{$post->coverImg}}" class="card-img-top" alt="post_img">
+                                <img src="{{asset("storage/" . $post->coverImg) }}" class="card-img-top" alt="post_img">
                                 <div class="card-body article">
                                     <div class="d-flex justify-content-between">
                                         <h4 class="card-title">{{$post->title}}</h4>
