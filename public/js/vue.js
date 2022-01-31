@@ -707,7 +707,6 @@ __webpack_require__.r(__webpack_exports__);
       var url = "/api/posts/" + this.$route.params.slug;
       window.axios.get(url).then(function (resp) {
         _this.post = resp.data;
-        console.log(_this.post);
       });
     }
   },
@@ -754,7 +753,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.text-cont {\r\n  text-align: end;\n}\n.card-img-top {\r\n  height: 250px;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  -o-object-position: center;\r\n     object-position: center;\n}\n.card-body {\r\n  height: 250px;\r\n  overflow: hidden;\n}\r\n", ""]);
+exports.push([module.i, "\n.text-cont {\r\n  text-align: end;\n}\n.card-img-top {\r\n  height: 250px;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  -o-object-position: center;\r\n     object-position: center;\n}\n.card-body {\r\n  max-height: 250px;\r\n  overflow: hidden;\n}\r\n", ""]);
 
 // exports
 
@@ -2057,7 +2056,7 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "nav-link text-white px-lg-3 py-3 py-lg-4",
-          attrs: { href: "login" },
+          attrs: { href: "/login" },
         },
         [_vm._v("Login")]
       ),
@@ -2277,7 +2276,7 @@ var render = function () {
             "div",
             { staticClass: "col-9" },
             [
-              _c("h3", [
+              _c("h5", { staticClass: "mb-5" }, [
                 _vm._v("\n            Ultimi\n            "),
                 _c(
                   "select",
@@ -2553,71 +2552,83 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "my-container rounded p-5 mb-5" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", [
-          _c("img", {
-            staticClass: "w-100",
-            attrs: { src: _vm.post.coverImg, alt: "post_img" },
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body article" }, [
-            _c("div", { staticClass: "d-flex justify-content-between mb-2" }, [
-              _c("h4", { staticClass: "card-title" }, [
-                _vm._v(_vm._s(_vm.post.title)),
-              ]),
+  return _vm.post.user
+    ? _c("div", [
+        _c("div", { staticClass: "my-container rounded p-5 mb-5" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("div", [
+              _c("img", {
+                staticClass: "w-100",
+                attrs: { src: _vm.post.coverImg, alt: "post_img" },
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "text-cont" }, [
-                _c("div", [
-                  _c("strong", [
-                    _c("em", [
-                      _vm._v(" Categoria: " + _vm._s(_vm.post.category.name)),
+              _c("div", { staticClass: "card-body article" }, [
+                _c(
+                  "div",
+                  { staticClass: "d-flex justify-content-between mb-2" },
+                  [
+                    _c("h4", { staticClass: "card-title" }, [
+                      _vm._v(_vm._s(_vm.post.title)),
                     ]),
-                  ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "text-cont" }, [
+                      _c("div", [
+                        _c("strong", [
+                          _c("em", [
+                            _vm._v(
+                              " Categoria: " + _vm._s(_vm.post.category.name)
+                            ),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        _vm._l(_vm.post.tags, function (tag) {
+                          return _c(
+                            "span",
+                            {
+                              key: tag.id,
+                              staticClass: "badge bg-success ml-1",
+                              staticStyle: { color: "white" },
+                            },
+                            [_vm._v(_vm._s(tag.name))]
+                          )
+                        }),
+                        0
+                      ),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("h5", { staticClass: "card-subtitle mb-2 text-muted" }, [
+                  _vm._v(_vm._s(_vm.post.subtitle)),
                 ]),
                 _vm._v(" "),
                 _c(
-                  "div",
-                  _vm._l(_vm.post.tags, function (tag) {
-                    return _c(
-                      "span",
-                      {
-                        key: tag.id,
-                        staticClass: "badge bg-success ml-1",
-                        staticStyle: { color: "white" },
-                      },
-                      [_vm._v(_vm._s(tag.name))]
-                    )
-                  }),
-                  0
+                  "h6",
+                  { staticClass: "card-subtitle mb-2 text-muted mb-4" },
+                  [
+                    _vm._v(
+                      "\n            Scritto da " +
+                        _vm._s(_vm.post.user.name) +
+                        " - " +
+                        _vm._s(_vm.creationDate) +
+                        "\n          "
+                    ),
+                  ]
                 ),
+                _vm._v(" "),
+                _c("p", {
+                  staticClass: "card-text",
+                  domProps: { innerHTML: _vm._s(_vm.post.text) },
+                }),
               ]),
             ]),
-            _vm._v(" "),
-            _c("h5", { staticClass: "card-subtitle mb-2 text-muted" }, [
-              _vm._v(_vm._s(_vm.post.subtitle)),
-            ]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
-              _vm._v(
-                "\n            Scritto da " +
-                  _vm._s(_vm.post.user.name) +
-                  " - " +
-                  _vm._s(_vm.creationDate) +
-                  "\n          "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("p", {
-              staticClass: "card-text",
-              domProps: { innerHTML: _vm._s(_vm.post.text) },
-            }),
           ]),
         ]),
-      ]),
-    ]),
-  ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true

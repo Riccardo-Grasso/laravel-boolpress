@@ -47,7 +47,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-white px-lg-3 py-3 py-lg-4" href="login"
+            <a class="nav-link text-white px-lg-3 py-3 py-lg-4" href="/login"
               >Login</a
             >
           </li>

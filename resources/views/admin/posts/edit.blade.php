@@ -51,6 +51,11 @@
             <textarea class="form-control" id="field_text" name="text" rows="3" value="{{$post->text}}">{!! $post->text !!}</textarea>
         </div>
 
+        <div class="mb-4">
+            <label for="field_coverImg" class="form-label">Immagine di copertina</label>
+            <input type="text" class="form-control" id="field_coverImg" name="coverImg" value="{{$post->coverImg}}">
+        </div>
+
         <div>
             <button class="btn btn-danger" type="reset">Svuota</button>
             <button class="btn btn-success" type="submit">Invia</button>

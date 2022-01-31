@@ -8,7 +8,7 @@
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-9">
-            <h3>
+            <h5 class="mb-5">
               Ultimi
               <select
                 class="form-select d-inline-block"
@@ -20,7 +20,7 @@
                 <option value="15">15</option>
               </select>
               post
-            </h3>
+            </h5>
 
             <div class="progress" v-if="loading">
               <div

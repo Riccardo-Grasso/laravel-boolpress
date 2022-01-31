@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="post.user">
     <div class="my-container rounded p-5 mb-5">
       <div class="container">
         <div>
@@ -26,7 +26,7 @@
               </div>
             </div>
             <h5 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
+            <h6 class="card-subtitle mb-2 text-muted mb-4">
               Scritto da {{ post.user.name }} - {{ creationDate }}
             </h6>
             <p class="card-text" v-html="post.text"></p>
@@ -52,7 +52,6 @@ export default {
       const url = "/api/posts/" + this.$route.params.slug;
       window.axios.get(url).then((resp) => {
         this.post = resp.data;
-        console.log(this.post);
       });
     },
   },
