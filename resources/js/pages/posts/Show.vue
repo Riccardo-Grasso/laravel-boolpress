@@ -8,7 +8,7 @@
             class="w-100"
             alt="post_img"
           />
-          <div class="card-body article">
+          <div class="my-card-body py-4 article">
             <div class="d-flex justify-content-between mb-2">
               <h4 class="card-title">{{ post.title }}</h4>
 

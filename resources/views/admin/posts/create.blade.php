@@ -21,7 +21,7 @@
 
         <div class="mb-4">
             <label for="field_category_id" class="form-label">Categoria</label>
-            <select name="category_id" id="category_id" class="form-control">
+            <select name="category_id" id="field_category_id" class="form-control">
                 <option value="" disabled selected hidden>Scegli una categoria...</option>
                 @foreach ($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
